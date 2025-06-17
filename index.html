@@ -151,7 +151,7 @@
 
         <!-- Header -->
         <header class="py-6 flex justify-between items-center text-sm">
-            <a href="#home" class="font-bold text-xl text-white hover:accent-glow transition-all hoverable">WPS_</a>
+           
             <nav class="hidden md:flex items-center gap-x-8">
                 <a href="#about" class="hover:accent-glow transition-all hoverable">[about]</a>
                 <a href="#experience" class="hover:accent-glow transition-all hoverable">[experience]</a>
@@ -455,7 +455,7 @@
                 let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
                 const payload = { contents: chatHistory };
                 const apiKey = "" // Your API key if required
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${AIzaSyCo5hjxRXqefTHv24d6QM3Yj8QTVx3aaxc}`;
 
                 const response = await fetch(apiUrl, {
                     method: 'POST',
