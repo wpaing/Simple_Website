@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Win Paing Soe /// System Architect</title>
+    <title>Win Paing Soe /// DevOps Engineer</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts: Orbitron & Roboto Mono -->
@@ -20,6 +20,7 @@
             background-color: #030613; /* Deep Space Blue */
             color: #c0d1e3; /* Nebula Gray */
             overflow-x: hidden;
+            cursor: none; /* Hide the default cursor */
         }
         h1, h2, h3 {
             font-family: 'Orbitron', sans-serif;
@@ -40,6 +41,25 @@
         main {
             position: relative;
             z-index: 1;
+        }
+
+        /* --- Custom Mouse Cursor --- */
+        .cursor-ring {
+            position: fixed;
+            width: 30px;
+            height: 30px;
+            border: 2px solid #00e5ff;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 9999;
+            transition: width 0.3s, height 0.3s, background-color 0.3s, border-width 0.3s;
+        }
+        .cursor-ring.hovered {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(0, 229, 255, 0.1);
+            border-width: 1px;
         }
 
         /* --- Glitch Effect --- */
@@ -92,33 +112,69 @@
         @keyframes draw-line {
             to { stroke-dashoffset: 0; }
         }
+
+        /* --- Gemini Mission Control Section --- */
+        .mission-control-textarea {
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(0, 229, 255, 0.3);
+            resize: none;
+            transition: box-shadow 0.3s;
+        }
+        .mission-control-textarea:focus {
+            outline: none;
+            box-shadow: 0 0 15px rgba(0, 229, 255, 0.5);
+        }
+        .gemini-button {
+            border: 1px solid #00e5ff;
+            background: transparent;
+            color: #00e5ff;
+            text-shadow: 0 0 5px #00e5ff;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        .gemini-button:hover {
+            background: rgba(0, 229, 255, 0.1);
+            box-shadow: 0 0 15px rgba(0, 229, 255, 0.5);
+        }
+        .mission-briefing-result {
+             white-space: pre-wrap; /* Preserve whitespace and newlines */
+             border: 1px dashed rgba(0, 229, 255, 0.3);
+             background: rgba(15, 23, 42, 0.3);
+             min-height: 200px;
+        }
     </style>
 </head>
 <body class="antialiased">
+    <div class="cursor-ring"></div>
     <div id="starfield" class="canvas-container"></div>
     
     <main class="max-w-5xl mx-auto px-6 sm:px-8">
 
         <!-- Header -->
         <header class="py-6 flex justify-between items-center text-sm">
-            <a href="#home" class="font-bold text-xl text-white hover:accent-glow transition-all">WPS_</a>
+            <a href="#home" class="font-bold text-xl text-white hover:accent-glow transition-all hoverable">WPS_</a>
             <nav class="hidden md:flex items-center gap-x-8">
-                <a href="#about" class="hover:accent-glow transition-all">[about]</a>
-                <a href="#experience" class="hover:accent-glow transition-all">[experience]</a>
-                <a href="#skills" class="hover:accent-glow transition-all">[skills]</a>
-                <a href="#contact" class="hover:accent-glow transition-all">[contact]</a>
+                <a href="#about" class="hover:accent-glow transition-all hoverable">[about]</a>
+                <a href="#experience" class="hover:accent-glow transition-all hoverable">[experience]</a>
+                <a href="#skills" class="hover:accent-glow transition-all hoverable">[skills]</a>
+                <a href="#contact" class="hover:accent-glow transition-all hoverable">[contact]</a>
             </nav>
         </header>
 
         <!-- Hero Section -->
         <section id="home" class="min-h-screen flex flex-col justify-center items-center text-center">
-            <div class="relative w-40 h-40 mb-8">
+            <div class="relative w-40 h-40 mb-8 hoverable">
                 <div class="absolute inset-0 border-2 border-cyan-400/50 rounded-full animate-ping"></div>
+                <!-- You can update the src to the new image file name if you upload it -->
                 <img src="memory2.jpg" alt="Win Paing Soe" class="w-full h-full object-cover rounded-full border-2 border-cyan-400 shadow-2xl shadow-cyan-500/20" onerror="this.onerror=null;this.src='https://placehold.co/160x160/030613/00e5ff?text=WPS';">
             </div>
             <h1 class="text-5xl md:text-7xl font-black text-white glitch" data-text="WIN PAING SOE">WIN PAING SOE</h1>
-            <p class="mt-4 text-xl md:text-2xl accent-glow">[ IT SUPPORT & CLOUD ENGINEER ]</p>
-            <p class="mt-6 max-w-2xl text-lg">Architect of secure, reliable, and performant digital infrastructures in the cloud and on-premise.</p>
+            <p class="mt-4 text-xl md:text-2xl accent-glow">[ DEVOPS ENGINEER ]</p>
+            <p class="mt-6 max-w-2xl text-lg">System Administrator & Cloud Engineer specializing in troubleshooting, cloud platforms, and automation.</p>
+            <div class="mt-8">
+                <a href="WinPaingSoe_Resume.pdf" download="WinPaingSoe_Resume.pdf" class="gemini-button font-bold py-2 px-6 rounded-lg text-lg hoverable">
+                    [ Download CV ]
+                </a>
+            </div>
         </section>
 
         <!-- Divider -->
@@ -136,7 +192,7 @@
         <section id="about" class="py-16">
             <h2 class="text-4xl text-center font-bold mb-8 text-white">SYSTEM.OUT.PRINTLN("<span class="accent-glow">ABOUT</span>");</h2>
             <p class="text-center max-w-3xl mx-auto text-lg leading-relaxed">
-                With over four years in system administration and cloud engineering, my mission is to optimize and secure digital ecosystems. I specialize in Linux environments, database management, and designing scalable cloud architectures. I hold a B.Eng in IT and am driven by the logic of problem-solving and the challenge of technological innovation.
+                A highly skilled System Administrator and Cloud Infrastructure Engineer with over 4 years of experience in managing Linux systems and cloud environments. Seeking a DevOps Engineer position to apply my expertise in troubleshooting, cloud platforms, and automation to enhance reliability and performance.
             </p>
         </section>
 
@@ -144,26 +200,26 @@
         <section id="experience" class="py-16">
             <h2 class="text-4xl text-center font-bold mb-12 text-white">DEPLOYMENT_HISTORY<span class="accent-glow">()</span></h2>
             <div class="grid md:grid-cols-2 gap-8">
-                <!-- Job 1 -->
-                <div class="holo-card p-6 rounded-lg">
+                <div class="holo-card p-6 rounded-lg hoverable">
                     <p class="font-bold accent-glow">2023 - PRESENT</p>
-                    <h3 class="text-2xl font-bold text-white mt-1 mb-2">Cloud Infrastructure Engineer</h3>
+                    <h3 class="text-2xl font-bold text-white mt-1 mb-2">Cloud Engineer</h3>
                     <p class="text-lg text-gray-400 font-semibold mb-4">Myanmar Payment Solution Services</p>
                     <ul class="list-disc list-inside text-gray-400 space-y-2 pl-2">
-                        <li>Architected scalable cloud solutions.</li>
-                        <li>Optimized resource performance and cost.</li>
-                        <li>Implemented proactive monitoring systems.</li>
+                        <li>Developed and maintained CI/CD pipelines.</li>
+                        <li>Designed scalable and secure cloud solutions.</li>
+                        <li>Managed monitoring and alerting systems.</li>
+                        <li>Developed backup and recovery procedures.</li>
                     </ul>
                 </div>
-                <!-- Job 2 -->
-                <div class="holo-card p-6 rounded-lg">
+                <div class="holo-card p-6 rounded-lg hoverable">
                     <p class="font-bold accent-glow">2019 - 2023</p>
-                    <h3 class="text-2xl font-bold text-white mt-1 mb-2">System Support Engineer</h3>
+                    <h3 class="text-2xl font-bold text-white mt-1 mb-2">System/Application Support</h3>
                     <p class="text-lg text-gray-400 font-semibold mb-4">CHID Bank</p>
                     <ul class="list-disc list-inside text-gray-400 space-y-2 pl-2">
-                        <li>Supported Temenos T24 Core Banking.</li>
-                        <li>Managed Oracle DB integrity and backups.</li>
-                        <li>Configured JBoss application servers.</li>
+                        <li>Provided technical support for Temenos T24.</li>
+                        <li>Managed and optimized Linux systems.</li>
+                        <li>Performed Oracle database backup and restore.</li>
+                        <li>Created UAT/staging environments with JBoss & Oracle.</li>
                     </ul>
                 </div>
             </div>
@@ -173,14 +229,15 @@
         <section id="skills" class="py-16">
             <h2 class="text-4xl text-center font-bold mb-12 text-white">CORE_MODULES<span class="accent-glow">[]</span></h2>
             <div class="flex flex-wrap justify-center gap-4 text-center">
-                <div class="skill-item">Linux Admin</div>
-                <div class="skill-item">Cloud Computing</div>
-                <div class="skill-item">Networking</div>
-                <div class="skill-item">Web Security</div>
-                <div class="skill-item">Oracle DBA</div>
-                <div class="skill-item">Containerization</div>
-                <div class="skill-item">Bash & Python</div>
-                <div class="skill-item">Backup & Restore</div>
+                <div class="skill-item hoverable">Linux Admin</div>
+                <div class="skill-item hoverable">GitLab/GitHub</div>
+                <div class="skill-item hoverable">Docker/Podman</div>
+                <div class="skill-item hoverable">Kubernetes</div>
+                <div class="skill-item hoverable">Ansible/Terraform</div>
+                <div class="skill-item hoverable">Python/Bash</div>
+                <div class="skill-item hoverable">AWS/GCP/Azure</div>
+                <div class="skill-item hoverable">MySQL/Oracle DB</div>
+                <div class="skill-item hoverable">Middleware</div>
             </div>
             <style>
                 .skill-item {
@@ -196,46 +253,100 @@
             </style>
         </section>
 
+        <!-- Gemini Mission Control Section -->
+        <section id="mission-control" class="py-16">
+            <h2 class="text-4xl text-center font-bold mb-4 text-white">MISSION_CONTROL<span class="accent-glow">.AI</span></h2>
+            <p class="text-center max-w-3xl mx-auto text-lg mb-8">
+                Have a project or a technical challenge? Input the details below to generate an official mission briefing.
+            </p>
+            <div class="max-w-3xl mx-auto">
+                <textarea id="mission-input" rows="4" class="mission-control-textarea w-full p-4 rounded-lg hoverable" placeholder="e.g., 'Migrate our on-premise servers to a secure and scalable cloud environment...'"></textarea>
+                <div class="text-center mt-4">
+                    <button id="generate-mission-btn" class="gemini-button font-bold py-2 px-6 rounded-lg text-lg hoverable">
+                        ✨ Generate Mission Briefing
+                    </button>
+                </div>
+                <div id="mission-output" class="mission-briefing-result mt-8 p-6 rounded-lg text-gray-300">
+                     <p id="briefing-placeholder" class="text-gray-500">// STANDING BY FOR MISSION PARAMETERS...</p>
+                     <p id="briefing-loader" class="text-yellow-400 hidden">// TRANSMITTING TO DEEP SPACE NETWORK... PLEASE WAIT...</p>
+                     <div id="briefing-content"></div>
+                </div>
+            </div>
+        </section>
+
         <!-- Contact Section -->
         <section id="contact" class="py-32 text-center">
             <h2 class="text-4xl font-bold text-white mb-4">INITIATE_CONTACT</h2>
             <p class="text-lg mb-8">Have a project or a question? Let's connect and build the future.</p>
-            <a href="mailto:sysadm.winpaingsoe@gmail.com" class="text-2xl font-bold accent-glow hover:text-white transition-all">
-                [sysadm.winpaingsoe@gmail.com]
-            </a>
+            <div class="flex flex-col items-center gap-4">
+                 <a href="mailto:sysadm.winpaingsoe@gmail.com" class="text-2xl font-bold accent-glow hover:text-white transition-all hoverable">
+                    [sysadm.winpaingsoe@gmail.com]
+                </a>
+                <a href="https://www.linkedin.com/in/win-paing-soe-b53183100/" target="_blank" rel="noopener noreferrer" class="text-lg text-gray-400 hover:accent-glow transition-all hoverable">
+                    [LinkedIn Profile]
+                </a>
+            </div>
         </section>
 
     </main>
     <script>
-        // --- Three.js Starfield ---
+        // --- Custom Cursor ---
+        const cursorRing = document.querySelector('.cursor-ring');
+        document.addEventListener('mousemove', (e) => {
+            cursorRing.style.left = `${e.clientX}px`;
+            cursorRing.style.top = `${e.clientY}px`;
+        });
+        const hoverableElements = document.querySelectorAll('.hoverable');
+        hoverableElements.forEach(el => {
+            el.addEventListener('mouseover', () => {
+                cursorRing.classList.add('hovered');
+            });
+            el.addEventListener('mouseout', () => {
+                cursorRing.classList.remove('hovered');
+            });
+        });
+
+        // --- Three.js Scene Setup ---
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer();
+        camera.position.z = 5;
+        
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setClearColor(0x000000, 0); // Make renderer background transparent
         renderer.setSize(window.innerWidth, window.innerHeight);
         document.getElementById('starfield').appendChild(renderer.domElement);
+        
+        // --- Cosmic Web Effect ---
+        const particleCount = 300;
+        const particles = new THREE.BufferGeometry();
+        const posArray = new Float32Array(particleCount * 3);
+        const velocities = [];
 
-        const stars = [];
-        for (let i = 0; i < 10000; i++) {
-            const geometry = new THREE.BufferGeometry();
-            const vertices = [];
-            vertices.push( (Math.random() - 0.5) * 2000, (Math.random() - 0.5) * 2000, (Math.random() - 0.5) * 2000 );
-            geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
-            
-            const material = new THREE.PointsMaterial({ 
-                size: Math.random() * 2 + 1,
-                color: Math.random() > 0.1 ? 0xffffff : 0x00e5ff,
-                transparent: true,
-                opacity: Math.random() * 0.5 + 0.2
-            });
-            const star = new THREE.Points(geometry, material);
-            stars.push(star);
-            scene.add(star);
+        for (let i = 0; i < particleCount * 3; i++) {
+            posArray[i] = (Math.random() - 0.5) * 20;
+            velocities.push((Math.random() - 0.5) * 0.01);
         }
+        particles.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        
+        const particleMaterial = new THREE.PointsMaterial({
+            size: 0.03,
+            color: 0x00e5ff
+        });
+        const particleMesh = new THREE.Points(particles, particleMaterial);
+        scene.add(particleMesh);
 
-        camera.position.z = 5;
+        const linesGeometry = new THREE.BufferGeometry();
+        const linesMaterial = new THREE.LineBasicMaterial({
+            color: 0xffffff,
+            transparent: true,
+            opacity: 0.05
+        });
+        const lineMesh = new THREE.LineSegments(linesGeometry, linesMaterial);
+        scene.add(lineMesh);
 
-        let mouseX = 0;
-        let mouseY = 0;
+
+        // --- Animation Loop ---
+        let mouseX = 0, mouseY = 0;
         document.addEventListener('mousemove', (event) => {
             mouseX = (event.clientX / window.innerWidth) * 2 - 1;
             mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
@@ -243,16 +354,43 @@
 
         function animate() {
             requestAnimationFrame(animate);
-            camera.position.x += (mouseX * 5 - camera.position.x) * 0.02;
-            camera.position.y += (mouseY * 5 - camera.position.y) * 0.02;
+            const positions = particleMesh.geometry.attributes.position.array;
+            
+            let vertices = [];
+            for (let i = 0; i < particleCount; i++) {
+                const i3 = i * 3;
+                positions[i3] += velocities[i3];
+                positions[i3+1] += velocities[i3+1];
+                positions[i3+2] += velocities[i3+2];
+                
+                // Bounce off walls
+                if(positions[i3+1] > 10 || positions[i3+1] < -10) velocities[i3+1] *= -1;
+                if(positions[i3] > 10 || positions[i3] < -10) velocities[i3] *= -1;
+                if(positions[i3+2] > 10 || positions[i3+2] < -10) velocities[i3+2] *= -1;
+
+                // Check for connections
+                for(let j=i+1; j < particleCount; j++){
+                    const j3 = j * 3;
+                    const dx = positions[i3] - positions[j3];
+                    const dy = positions[i3+1] - positions[j3+1];
+                    const dz = positions[i3+2] - positions[j3+2];
+                    const dist = Math.sqrt(dx*dx + dy*dy + dz*dz);
+
+                    if(dist < 1.5){
+                        vertices.push(positions[i3], positions[i3+1], positions[i3+2]);
+                        vertices.push(positions[j3], positions[j3+1], positions[j3+2]);
+                    }
+                }
+            }
+            linesGeometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+            particleMesh.geometry.attributes.position.needsUpdate = true;
+
+
+            // Parallax camera
+            camera.position.x += (mouseX * 0.5 - camera.position.x) * 0.02;
+            camera.position.y += (mouseY * 0.5 - camera.position.y) * 0.02;
             camera.lookAt(scene.position);
             
-            // Animate stars
-            stars.forEach(star => {
-                star.rotation.x += 0.0001;
-                star.rotation.y += 0.0001;
-            });
-
             renderer.render(scene, camera);
         }
         animate();
@@ -271,13 +409,74 @@
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
                 const { width, height } = rect;
-                const rotateX = (y / height - 0.5) * -15; // Invert for natural feel
+                const rotateX = (y / height - 0.5) * -15; 
                 const rotateY = (x / width - 0.5) * 15;
                 card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
             });
             card.addEventListener('mouseleave', () => {
                 card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
             });
+        });
+
+        // --- Gemini API Mission Briefing Generator ---
+        const generateBtn = document.getElementById('generate-mission-btn');
+        const missionInput = document.getElementById('mission-input');
+        const briefingPlaceholder = document.getElementById('briefing-placeholder');
+        const briefingLoader = document.getElementById('briefing-loader');
+        const briefingContent = document.getElementById('briefing-content');
+
+        generateBtn.addEventListener('click', async () => {
+            const userInput = missionInput.value;
+            if (!userInput.trim()) {
+                briefingContent.innerHTML = '<p class="text-red-500">// ERROR: Mission parameters cannot be empty. Please provide a project description.</p>';
+                return;
+            }
+
+            briefingPlaceholder.classList.add('hidden');
+            briefingLoader.classList.remove('hidden');
+            briefingContent.innerHTML = '';
+
+            const prompt = `
+            You are Mission Control's primary AI for the Interstellar Systems Alliance. Your task is to convert a user-submitted project proposal into a formal mission briefing. The user's proposal is: "${userInput}".
+
+            The available lead operative is Win Paing Soe, with the following core skills: Linux Administration, GitLab, GitHub, Docker, Podman, Kubernetes, Ansible, Terraform, Python, Bash, AWS, GCP, Azure, MySQL, Oracle Database 12c, Middleware (JBoss, Tomcat), KVM, Vagrant, Backup and Restore.
+
+            Generate a mission briefing with the following structure, using a formal, futuristic, and inspiring tone. Emphasize the operative's skills by reframing them in sci-fi terms:
+            - **MISSION NAME:** [Create a cool, space-themed code name]
+            - **OBJECTIVES:** [List 2-3 key objectives based on the user's proposal]
+            - **REQUIRED TECHNOLOGIES:** [List 3-4 of Win Paing Soe's skills, framed in sci-fi terms (e.g., 'Quantum-state Backup & Restore Protocols', 'Cloud Deployment Trajectory Analysis', 'Hyper-V Containerization Fields')]
+            - **MISSION PHASES:** [Outline a brief, 3-phase plan for the mission: 1. Analysis & Architecture, 2. Implementation & Deployment, 3. Optimization & Security Hardening]
+            - **DIRECTIVE:** [A concluding, inspiring sentence for the operative]
+
+            Format the output clearly. Use "**" for bolding headings.
+            `;
+
+            try {
+                let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
+                const payload = { contents: chatHistory };
+                const apiKey = "" // Your API key if required
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                
+                if (!response.ok) { throw new Error(`Network response was not ok. Status: ${response.status}`); }
+
+                const result = await response.json();
+                 if (result.candidates && result.candidates[0]?.content?.parts?.[0]) {
+                     let text = result.candidates[0].content.parts[0].text;
+                     text = text.replace(/\*\*(.*?)\*\*/g, '<span class="text-white font-bold">$1</span>');
+                     briefingContent.innerHTML = text;
+                 } else { throw new Error("Invalid response structure from API."); }
+            } catch (error) {
+                console.error("Error calling Gemini API:", error);
+                briefingContent.innerHTML = '<p class="text-red-500">// COMMS FAILURE: Could not connect to Mission Control AI. Please check console for details.</p>';
+            } finally {
+                briefingLoader.classList.add('hidden');
+            }
         });
     </script>
 </body>
