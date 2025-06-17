@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Win Paing Soe /// System Architect</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Orbitron & Roboto Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Three.js for 3D background -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <style>
+        /* --- Base & Theme --- */
+        body {
+            font-family: 'Roboto Mono', monospace;
+            background-color: #030613; /* Deep Space Blue */
+            color: #c0d1e3; /* Nebula Gray */
+            overflow-x: hidden;
+        }
+        h1, h2, h3 {
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+        }
+        .accent-glow {
+            color: #00e5ff; /* Cyan Glow */
+            text-shadow: 0 0 5px #00e5ff, 0 0 10px #00e5ff, 0 0 15px #00e5ff;
+        }
+        .canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+        }
+        main {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* --- Glitch Effect --- */
+        .glitch {
+            position: relative;
+        }
+        .glitch:before, .glitch:after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #030613;
+            overflow: hidden;
+            clip: rect(0, 900px, 0, 0);
+        }
+        .glitch:before {
+            left: 2px;
+            text-shadow: -2px 0 #ff00c1; /* Magenta */
+            animation: glitch-anim-1 2s infinite linear alternate-reverse;
+        }
+        .glitch:after {
+            left: -2px;
+            text-shadow: -2px 0 #00e5ff; /* Cyan */
+            animation: glitch-anim-2 2s infinite linear alternate-reverse;
+        }
+        @keyframes glitch-anim-1 {
+            0% { clip: rect(42px, 9999px, 44px, 0); } 20% { clip: rect(12px, 9999px, 60px, 0); } 40% { clip: rect(50px, 9999px, 102px, 0); } 60% { clip: rect(30px, 9999px, 90px, 0); } 80% { clip: rect(80px, 9999px, 52px, 0); } 100% { clip: rect(25px, 9999px, 65px, 0); }
+        }
+        @keyframes glitch-anim-2 {
+            0% { clip: rect(80px, 9999px, 100px, 0); } 20% { clip: rect(40px, 9999px, 33px, 0); } 40% { clip: rect(23px, 9999px, 80px, 0); } 60% { clip: rect(90px, 9999px, 40px, 0); } 80% { clip: rect(10px, 9999px, 95px, 0); } 100% { clip: rect(50px, 9999px, 30px, 0); }
+        }
+        
+        /* --- Holo Card --- */
+        .holo-card {
+            background: rgba(15, 23, 42, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 229, 255, 0.2);
+            transition: transform 0.5s, box-shadow 0.5s;
+            transform-style: preserve-3d;
+        }
+        
+        /* --- Animated SVG Divider --- */
+        .constellation-divider {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: draw-line 5s ease-out forwards;
+        }
+        @keyframes draw-line {
+            to { stroke-dashoffset: 0; }
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <div id="starfield" class="canvas-container"></div>
+    
+    <main class="max-w-5xl mx-auto px-6 sm:px-8">
+
+        <!-- Header -->
+        <header class="py-6 flex justify-between items-center text-sm">
+            <a href="#home" class="font-bold text-xl text-white hover:accent-glow transition-all">WPS_</a>
+            <nav class="hidden md:flex items-center gap-x-8">
+                <a href="#about" class="hover:accent-glow transition-all">[about]</a>
+                <a href="#experience" class="hover:accent-glow transition-all">[experience]</a>
+                <a href="#skills" class="hover:accent-glow transition-all">[skills]</a>
+                <a href="#contact" class="hover:accent-glow transition-all">[contact]</a>
+            </nav>
+        </header>
+
+        <!-- Hero Section -->
+        <section id="home" class="min-h-screen flex flex-col justify-center items-center text-center">
+            <div class="relative w-40 h-40 mb-8">
+                <div class="absolute inset-0 border-2 border-cyan-400/50 rounded-full animate-ping"></div>
+                <img src="memory2.jpg" alt="Win Paing Soe" class="w-full h-full object-cover rounded-full border-2 border-cyan-400 shadow-2xl shadow-cyan-500/20" onerror="this.onerror=null;this.src='https://placehold.co/160x160/030613/00e5ff?text=WPS';">
+            </div>
+            <h1 class="text-5xl md:text-7xl font-black text-white glitch" data-text="WIN PAING SOE">WIN PAING SOE</h1>
+            <p class="mt-4 text-xl md:text-2xl accent-glow">[ IT SUPPORT & CLOUD ENGINEER ]</p>
+            <p class="mt-6 max-w-2xl text-lg">Architect of secure, reliable, and performant digital infrastructures in the cloud and on-premise.</p>
+        </section>
+
+        <!-- Divider -->
+        <div class="w-full flex justify-center py-16">
+            <svg width="300" height="50" viewBox="0 0 300 50">
+                <path d="M0 25 L50 25 L75 5 L100 45 L125 15 L150 25 L175 40 L200 10 L225 35 L250 25 L300 25" fill="none" stroke="#00e5ff" stroke-width="1" class="constellation-divider"/>
+                <circle cx="75" cy="5" r="2" fill="#fff"/>
+                <circle cx="100" cy="45" r="2" fill="#fff"/>
+                <circle cx="175" cy="40" r="2" fill="#fff"/>
+                <circle cx="200" cy="10" r="2" fill="#fff"/>
+            </svg>
+        </div>
+        
+        <!-- About Section -->
+        <section id="about" class="py-16">
+            <h2 class="text-4xl text-center font-bold mb-8 text-white">SYSTEM.OUT.PRINTLN("<span class="accent-glow">ABOUT</span>");</h2>
+            <p class="text-center max-w-3xl mx-auto text-lg leading-relaxed">
+                With over four years in system administration and cloud engineering, my mission is to optimize and secure digital ecosystems. I specialize in Linux environments, database management, and designing scalable cloud architectures. I hold a B.Eng in IT and am driven by the logic of problem-solving and the challenge of technological innovation.
+            </p>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="py-16">
+            <h2 class="text-4xl text-center font-bold mb-12 text-white">DEPLOYMENT_HISTORY<span class="accent-glow">()</span></h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Job 1 -->
+                <div class="holo-card p-6 rounded-lg">
+                    <p class="font-bold accent-glow">2023 - PRESENT</p>
+                    <h3 class="text-2xl font-bold text-white mt-1 mb-2">Cloud Infrastructure Engineer</h3>
+                    <p class="text-lg text-gray-400 font-semibold mb-4">Myanmar Payment Solution Services</p>
+                    <ul class="list-disc list-inside text-gray-400 space-y-2 pl-2">
+                        <li>Architected scalable cloud solutions.</li>
+                        <li>Optimized resource performance and cost.</li>
+                        <li>Implemented proactive monitoring systems.</li>
+                    </ul>
+                </div>
+                <!-- Job 2 -->
+                <div class="holo-card p-6 rounded-lg">
+                    <p class="font-bold accent-glow">2019 - 2023</p>
+                    <h3 class="text-2xl font-bold text-white mt-1 mb-2">System Support Engineer</h3>
+                    <p class="text-lg text-gray-400 font-semibold mb-4">CHID Bank</p>
+                    <ul class="list-disc list-inside text-gray-400 space-y-2 pl-2">
+                        <li>Supported Temenos T24 Core Banking.</li>
+                        <li>Managed Oracle DB integrity and backups.</li>
+                        <li>Configured JBoss application servers.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Skills Section -->
+        <section id="skills" class="py-16">
+            <h2 class="text-4xl text-center font-bold mb-12 text-white">CORE_MODULES<span class="accent-glow">[]</span></h2>
+            <div class="flex flex-wrap justify-center gap-4 text-center">
+                <div class="skill-item">Linux Admin</div>
+                <div class="skill-item">Cloud Computing</div>
+                <div class="skill-item">Networking</div>
+                <div class="skill-item">Web Security</div>
+                <div class="skill-item">Oracle DBA</div>
+                <div class="skill-item">Containerization</div>
+                <div class="skill-item">Bash & Python</div>
+                <div class="skill-item">Backup & Restore</div>
+            </div>
+            <style>
+                .skill-item {
+                    border: 1px solid rgba(0, 229, 255, 0.3);
+                    padding: 0.5rem 1.5rem;
+                    border-radius: 4px;
+                    transition: background-color 0.3s, box-shadow 0.3s;
+                }
+                .skill-item:hover {
+                    background: rgba(0, 229, 255, 0.1);
+                    box-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
+                }
+            </style>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-32 text-center">
+            <h2 class="text-4xl font-bold text-white mb-4">INITIATE_CONTACT</h2>
+            <p class="text-lg mb-8">Have a project or a question? Let's connect and build the future.</p>
+            <a href="mailto:sysadm.winpaingsoe@gmail.com" class="text-2xl font-bold accent-glow hover:text-white transition-all">
+                [sysadm.winpaingsoe@gmail.com]
+            </a>
+        </section>
+
+    </main>
+    <script>
+        // --- Three.js Starfield ---
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.getElementById('starfield').appendChild(renderer.domElement);
+
+        const stars = [];
+        for (let i = 0; i < 10000; i++) {
+            const geometry = new THREE.BufferGeometry();
+            const vertices = [];
+            vertices.push( (Math.random() - 0.5) * 2000, (Math.random() - 0.5) * 2000, (Math.random() - 0.5) * 2000 );
+            geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+            
+            const material = new THREE.PointsMaterial({ 
+                size: Math.random() * 2 + 1,
+                color: Math.random() > 0.1 ? 0xffffff : 0x00e5ff,
+                transparent: true,
+                opacity: Math.random() * 0.5 + 0.2
+            });
+            const star = new THREE.Points(geometry, material);
+            stars.push(star);
+            scene.add(star);
+        }
+
+        camera.position.z = 5;
+
+        let mouseX = 0;
+        let mouseY = 0;
+        document.addEventListener('mousemove', (event) => {
+            mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+            mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+        });
+
+        function animate() {
+            requestAnimationFrame(animate);
+            camera.position.x += (mouseX * 5 - camera.position.x) * 0.02;
+            camera.position.y += (mouseY * 5 - camera.position.y) * 0.02;
+            camera.lookAt(scene.position);
+            
+            // Animate stars
+            stars.forEach(star => {
+                star.rotation.x += 0.0001;
+                star.rotation.y += 0.0001;
+            });
+
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // --- Holo Card 3D Tilt ---
+        const cards = document.querySelectorAll('.holo-card');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const { width, height } = rect;
+                const rotateX = (y / height - 0.5) * -15; // Invert for natural feel
+                const rotateY = (x / width - 0.5) * 15;
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>
