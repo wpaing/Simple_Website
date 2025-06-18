@@ -123,17 +123,6 @@
              border: 1px solid rgba(0, 229, 255, 0.2);
         }
 
-        /* --- Gemini UI --- */
-        .gemini-textarea {
-            background: rgba(15, 23, 42, 0.7);
-            border: 1px solid rgba(0, 229, 255, 0.3);
-            resize: none;
-            transition: box-shadow 0.3s;
-        }
-        .gemini-textarea:focus {
-            outline: none;
-            box-shadow: 0 0 15px rgba(0, 229, 255, 0.5);
-        }
         .gemini-button {
             border: 1px solid #00e5ff;
             background: transparent;
@@ -144,12 +133,6 @@
         .gemini-button:hover {
             background: rgba(0, 229, 255, 0.1);
             box-shadow: 0 0 15px rgba(0, 229, 255, 0.5);
-        }
-        .gemini-result {
-             white-space: pre-wrap; /* Preserve whitespace and newlines */
-             border: 1px dashed rgba(0, 229, 255, 0.3);
-             background: rgba(15, 23, 42, 0.3);
-             min-height: 200px;
         }
     </style>
 </head>
@@ -168,6 +151,7 @@
                 <a href="#projects" class="hover:accent-glow transition-all hoverable">[projects]</a>
                 <a href="#skills" class="hover:accent-glow transition-all hoverable">[skills]</a>
                 <a href="#contact" class="hover:accent-glow transition-all hoverable">[contact]</a>
+                <a href="#feedback" class="hover:accent-glow transition-all hoverable">[feedback]</a>
             </nav>
         </header>
 
@@ -301,61 +285,43 @@
             </style>
         </section>
 
-        <!-- Career Trajectory Analysis Section -->
-        <section id="career-analysis" class="py-16">
-             <h2 class="text-4xl text-center font-bold mb-4 text-white">CAREER_TRAJECTORY_AI<span class="accent-glow">.</span></h2>
-            <p class="text-center max-w-3xl mx-auto text-lg mb-8">
-                Paste a job description below to analyze the synergy between my skills and the role's requirements.
-            </p>
-            <div class="max-w-3xl mx-auto">
-                <textarea id="job-desc-input" rows="6" class="gemini-textarea w-full p-4 rounded-lg hoverable" placeholder="Paste job description here..."></textarea>
-                <div class="text-center mt-4">
-                    <button id="analyze-synergy-btn" class="gemini-button font-bold py-2 px-6 rounded-lg text-lg hoverable">
-                        ✨ Analyze Skill Synergy
-                    </button>
-                </div>
-                <div id="synergy-output" class="gemini-result mt-8 p-6 rounded-lg text-gray-300">
-                     <p id="synergy-placeholder" class="text-gray-500">// AWAITING JOB DESCRIPTION FOR ANALYSIS...</p>
-                     <p id="synergy-loader" class="text-yellow-400 hidden">// ANALYZING... CROSS-REFERENCING SKILL MATRIX...</p>
-                     <div id="synergy-content"></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Gemini Mission Control Section -->
-        <section id="mission-control" class="py-16">
-            <h2 class="text-4xl text-center font-bold mb-4 text-white">MISSION_CONTROL<span class="accent-glow">.AI</span></h2>
-            <p class="text-center max-w-3xl mx-auto text-lg mb-8">
-                Have a project or a technical challenge? Input the details below to generate an official mission briefing.
-            </p>
-            <div class="max-w-3xl mx-auto">
-                <textarea id="mission-input" rows="4" class="gemini-textarea w-full p-4 rounded-lg hoverable" placeholder="e.g., 'Migrate our on-premise servers to a secure and scalable cloud environment...'"></textarea>
-                <div class="text-center mt-4">
-                    <button id="generate-mission-btn" class="gemini-button font-bold py-2 px-6 rounded-lg text-lg hoverable">
-                        ✨ Generate Mission Briefing
-                    </button>
-                </div>
-                <div id="mission-output" class="gemini-result mt-8 p-6 rounded-lg text-gray-300">
-                     <p id="briefing-placeholder" class="text-gray-500">// STANDING BY FOR MISSION PARAMETERS...</p>
-                     <p id="briefing-loader" class="text-yellow-400 hidden">// TRANSMITTING TO DEEP SPACE NETWORK... PLEASE WAIT...</p>
-                     <div id="briefing-content"></div>
-                </div>
-            </div>
-        </section>
-
         <!-- Contact Section -->
         <section id="contact" class="py-32 text-center">
             <h2 class="text-4xl font-bold text-white mb-4">INITIATE_CONTACT</h2>
             <p class="text-lg mb-8">Have a project or a question? Let's connect and build the future.</p>
-            <div class="flex flex-col items-center gap-4">
-                 <a href="mailto:sysadm.winpaingsoe@gmail.com" class="text-2xl font-bold accent-glow hover:text-white transition-all hoverable flex items-center gap-x-3">
-                    <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                    <span>[sysadm.winpaingsoe@gmail.com]</span>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
+                <a href="mailto:sysadm.winpaingsoe@gmail.com" class="holo-card p-6 rounded-lg text-left flex items-center gap-x-4 hoverable">
+                     <svg class="w-10 h-10 accent-glow flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                     <div>
+                        <h3 class="font-bold text-lg text-white">EMAIL</h3>
+                        <p class="text-sm text-gray-400">[Send an Email]</p>
+                     </div>
                 </a>
-                <a href="https://www.linkedin.com/in/win-paing-soe-b53183100/" target="_blank" rel="noopener noreferrer" class="text-lg text-gray-400 hover:accent-glow transition-all hoverable flex items-center gap-x-3">
-                    <svg class="w-5 h-5" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LinkedIn</title><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>
-                    <span>[LinkedIn]</span>
+                 <a href="https://www.linkedin.com/in/win-paing-soe-b53183100/" target="_blank" rel="noopener noreferrer" class="holo-card p-6 rounded-lg text-left flex items-center gap-x-4 hoverable">
+                    <svg class="w-10 h-10 accent-glow flex-shrink-0" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LinkedIn</title><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>
+                    <div>
+                        <h3 class="font-bold text-lg text-white">LINKEDIN</h3>
+                        <p class="text-sm text-gray-400">[View Profile]</p>
+                    </div>
                 </a>
+            </div>
+            <div id="copy-notification" class="fixed bottom-10 left-1/2 -translate-x-1/2 bg-green-500 text-white py-2 px-4 rounded-lg transition-opacity duration-300 opacity-0">
+                Email address copied to clipboard!
+            </div>
+        </section>
+
+        <!-- Customer Feedback Section -->
+        <section id="feedback" class="py-16">
+            <h2 class="text-4xl text-center font-bold mb-12 text-white">TESTIMONIAL_TRANSMISSIONS<span class="accent-glow">...</span></h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="holo-card p-6 rounded-lg hoverable">
+                    <p class="text-lg italic">"Win's ability to diagnose and resolve complex system issues is exceptional. His automation scripts saved our team countless hours."</p>
+                    <p class="text-right mt-4 font-bold">- John Doe, Lead SRE</p>
+                </div>
+                <div class="holo-card p-6 rounded-lg hoverable">
+                    <p class="text-lg italic">"A true professional and a team player. Win's expertise in cloud infrastructure was critical to the success of our migration project."</p>
+                    <p class="text-right mt-4 font-bold">- Jane Smith, Project Manager</p>
+                </div>
             </div>
         </section>
 
@@ -565,105 +531,6 @@
             });
         });
         
-        // --- Gemini API Key ---
-        const GEMINI_API_KEY = "AIzaSyCo5hjxRXqefTHv24d6QM3Yj8QTVx3aaxc";
-
-        // --- Gemini Mission Briefing Generator ---
-        const generateBtn = document.getElementById('generate-mission-btn');
-        const missionInput = document.getElementById('mission-input');
-        const briefingPlaceholder = document.getElementById('briefing-placeholder');
-        const briefingLoader = document.getElementById('briefing-loader');
-        const briefingContent = document.getElementById('briefing-content');
-
-        generateBtn.addEventListener('click', async () => {
-            const userInput = missionInput.value;
-            if (!userInput.trim()) {
-                briefingContent.innerHTML = '<p class="text-red-500">// ERROR: Mission parameters cannot be empty. Please provide a project description.</p>';
-                return;
-            }
-
-            briefingPlaceholder.classList.add('hidden');
-            briefingLoader.classList.remove('hidden');
-            briefingContent.innerHTML = '';
-
-            const prompt = `
-            You are Mission Control's primary AI for the Interstellar Systems Alliance. Your task is to convert a user-submitted project proposal into a formal mission briefing. The user's proposal is: "${userInput}".
-            The available lead operative is Win Paing Soe, with the following core skills: Linux Administration, GitLab, GitHub, Docker, Podman, Kubernetes, Ansible, Terraform, Python, Bash, AWS, GCP, Azure, MySQL, Oracle Database 12c, Middleware (JBoss, Tomcat), KVM, Vagrant, Backup and Restore.
-            Generate a mission briefing using a formal, futuristic, and inspiring tone. Emphasize the operative's skills by reframing them in sci-fi terms. Format the output clearly. Use "**" for bolding headings.`;
-
-            try {
-                let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
-                const payload = { contents: chatHistory };
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
-                const response = await fetch(apiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
-                if (!response.ok) throw new Error(`Network response was not ok. Status: ${response.status}`);
-                const result = await response.json();
-                if (result.candidates?.[0]?.content?.parts?.[0]) {
-                     let text = result.candidates[0].content.parts[0].text;
-                     text = text.replace(/\*\*(.*?)\*\*/g, '<span class="text-white font-bold">$1</span>');
-                     briefingContent.innerHTML = text;
-                } else { throw new Error("Invalid response structure from API."); }
-            } catch (error) {
-                console.error("Error calling Gemini API:", error);
-                briefingContent.innerHTML = '<p class="text-red-500">// COMMS FAILURE: Could not connect to Mission Control AI. Please check console for details.</p>';
-            } finally {
-                briefingLoader.classList.add('hidden');
-            }
-        });
-
-        // --- Career Trajectory Analysis ---
-        const analyzeBtn = document.getElementById('analyze-synergy-btn');
-        const jobDescInput = document.getElementById('job-desc-input');
-        const synergyPlaceholder = document.getElementById('synergy-placeholder');
-        const synergyLoader = document.getElementById('synergy-loader');
-        const synergyContent = document.getElementById('synergy-content');
-        
-        analyzeBtn.addEventListener('click', async () => {
-            const userInput = jobDescInput.value;
-            if (!userInput.trim()) {
-                synergyContent.innerHTML = '<p class="text-red-500">// ERROR: Job description cannot be empty.</p>';
-                return;
-            }
-            
-            synergyPlaceholder.classList.add('hidden');
-            synergyLoader.classList.remove('hidden');
-            synergyContent.innerHTML = '';
-            
-            const prompt = `
-            You are a Career Trajectory AI. Analyze the synergy between the following candidate profile and the provided job description.
-            
-            **CANDIDATE PROFILE:**
-            - **Name:** Win Paing Soe
-            - **Title:** DevOps Engineer
-            - **Summary:** A highly skilled System Administrator and Cloud Infrastructure Engineer with over 4 years of experience managing Linux systems and cloud environments. Expertise in troubleshooting, cloud platforms, and automation.
-            - **Skills:** Linux Administration, GitLab, GitHub, Docker, Podman, Kubernetes, Ansible, Terraform, Python, Bash, AWS, GCP, Azure, MySQL, Oracle DB, Middleware.
-            
-            **JOB DESCRIPTION:**
-            "${userInput}"
-            
-            **YOUR TASK:**
-            Generate a "Skill Synergy Report". List the top 3-5 matching skills with a brief, one-sentence explanation of the synergy for each. Conclude with a "Compatibility Score" as a percentage and a one-sentence summary of the candidate's fit for the role. Use a professional and analytical tone. Format using "**" for headings.
-            `;
-            
-            try {
-                let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
-                const payload = { contents: chatHistory };
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
-                const response = await fetch(apiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
-                if (!response.ok) throw new Error(`Network error: ${response.status}`);
-                const result = await response.json();
-                if (result.candidates?.[0]?.content?.parts?.[0]) {
-                    let text = result.candidates[0].content.parts[0].text;
-                    text = text.replace(/\*\*(.*?)\*\*/g, '<span class="text-white font-bold">$1</span>');
-                    synergyContent.innerHTML = text;
-                } else { throw new Error("Invalid API response."); }
-            } catch (error) {
-                console.error("Error with Synergy Analysis API:", error);
-                synergyContent.innerHTML = '<p class="text-red-500">// ANALYSIS FAILED: Could not compute synergy. Please check console for details.</p>';
-            } finally {
-                synergyLoader.classList.add('hidden');
-            }
-        });
     </script>
 </body>
 </html>
